@@ -20,6 +20,7 @@ no_index:
 requires:
   Log::Report: 0.19
   Test::More: 0.54
+  XML::Compile: 1.34
   XML::Compile::Cache: 0.994
   XML::Compile::Tester: 0
-version: 0.10
+version: 0.11

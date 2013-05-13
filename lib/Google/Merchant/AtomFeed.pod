@@ -8,9 +8,6 @@ Google::Merchant::AtomFeed - provide Google with product info via Atoms
 
  Google::Merchant::AtomFeed
    is a Google::Merchant
-   is a XML::Compile::Cache
-   is a XML::Compile::Schema
-   is a XML::Compile
 
 =head1 SYNOPSIS
 
@@ -34,69 +31,24 @@ See L<documentation in base class|Google::Merchant/"Constructors">.
 
 =item Google::Merchant::AtomFeed-E<gt>B<new>(OPTIONS)
 
- -Option            --Defined in          --Default
-  allow_undeclared    XML::Compile::Cache   <false>
-  any_element         XML::Compile::Cache   'SKIP_ALL'
-  base                                      website
-  block_namespace     XML::Compile::Schema  []
-  hook                XML::Compile::Schema  undef
-  hooks               XML::Compile::Schema  []
-  ignore_unused_tags  XML::Compile::Schema  <false>
-  key_rewrite         XML::Compile::Schema  []
-  language                                  <undef>
-  opts_readers        XML::Compile::Cache   []
-  opts_rw             XML::Compile::Cache   []
-  opts_writers        XML::Compile::Cache   []
-  parser_options      XML::Compile          <many>
-  prefixes            XML::Compile::Cache   <smart>
-  schema_dirs         XML::Compile          undef
-  string_format       Google::Merchant      'HTML'
-  title               Google::Merchant      <required>
-  typemap             XML::Compile::Cache   {}
-  website             Google::Merchant      <required>
-  xsi_type            XML::Compile::Cache   {}
+ -Option       --Defined in      --Default
+  base                             website
+  language                         <undef>
+  string_format  Google::Merchant  'HTML'
+  title          Google::Merchant  <required>
+  website        Google::Merchant  <required>
 
 =over 2
 
-=item allow_undeclared => BOOLEAN
-
-=item any_element => CODE|'TAKE_ALL'|'SKIP_ALL'|'ATTEMPT'|'SLOPPY'
-
 =item base => URI
 
-=item block_namespace => NAMESPACE|TYPE|HASH|CODE|ARRAY
-
-=item hook => ARRAY-WITH-HOOKDATA | HOOK
-
-=item hooks => ARRAY-OF-HOOK
-
-=item ignore_unused_tags => BOOLEAN|REGEXP
-
-=item key_rewrite => HASH|CODE|ARRAY-of-HASH-and-CODE
-
 =item language => STRING
-
-=item opts_readers => HASH|ARRAY-of-PAIRS
-
-=item opts_rw => HASH|ARRAY-of-PAIRS
-
-=item opts_writers => HASH|ARRAY-of-PAIRS
-
-=item parser_options => HASH|ARRAY
-
-=item prefixes => HASH|ARRAY-of-PAIRS
-
-=item schema_dirs => DIRECTORY|ARRAY-OF-DIRECTORIES
 
 =item string_format => 'TEXT'|'HTML'|'XHTML'
 
 =item title => STRING
 
-=item typemap => HASH|ARRAY
-
 =item website => URI
-
-=item xsi_type => HASH|ARRAY
 
 =back
 
@@ -108,191 +60,13 @@ See L<documentation in base class|Google::Merchant/"Accessors">.
  
 =over 4
 
-=item $obj-E<gt>B<addHook>(HOOKDATA|HOOK|undef)
+=item $obj-E<gt>B<feed>()
 
-See L<XML::Compile::Schema/"Accessors">
+See L<Google::Merchant/"Accessors">
 
-=item $obj-E<gt>B<addHooks>(HOOK, [HOOK, ...])
+=item $obj-E<gt>B<schemas>()
 
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addKeyRewrite>(PREDEF|CODE|HASH, ...)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addSchemaDirs>(DIRECTORIES|FILENAME)
-
-=item Google::Merchant::AtomFeed-E<gt>B<addSchemaDirs>(DIRECTORIES|FILENAME)
-
-See L<XML::Compile/"Accessors">
-
-=item $obj-E<gt>B<addSchemas>(XML, OPTIONS)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addTypemap>(PAIR)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addTypemaps>(PAIRS)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<allowUndeclared>([BOOLEAN])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<anyElement>('ATTEMPT'|'SLOPPY'|'SKIP_ALL'|'TAKE_ALL'|CODE)
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<blockNamespace>(NAMESPACE|TYPE|HASH|CODE|ARRAY)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<hooks>()
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<typemap>([HASH|ARRAY|PAIRS])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<useSchema>(SCHEMA, [SCHEMA])
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<xsiType>([HASH|ARRAY|LIST])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=back
-
-=head2 Prefix management
-
-See L<documentation in base class|Google::Merchant/"Prefix management">.
- 
-=over 4
-
-=item $obj-E<gt>B<learnPrefixes>(NODE)
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefix>(PREFIX)
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefixFor>(URI)
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefixed>(TYPE|(NAMESPACE,LOCAL))
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefixes>([PAIRS|ARRAY|HASH])
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=back
-
-=head2 Compilers
-
-See L<documentation in base class|Google::Merchant/"Compilers">.
- 
-=over 4
-
-=item $obj-E<gt>B<addCompileOptions>(['READERS'|'WRITERS'|'RW'], OPTIONS)
-
-See L<XML::Compile::Cache/"Compilers">
-
-=item $obj-E<gt>B<compile>(('READER'|'WRITER'), TYPE, OPTIONS)
-
-See L<XML::Compile::Schema/"Compilers">
-
-=item $obj-E<gt>B<compileAll>(['READERS'|'WRITERS'|'RW', [NAMESPACE]])
-
-See L<XML::Compile::Cache/"Compilers">
-
-=item $obj-E<gt>B<dataToXML>(NODE|REF-XML-STRING|XML-STRING|FILENAME|FILEHANDLE|KNOWN)
-
-=item Google::Merchant::AtomFeed-E<gt>B<dataToXML>(NODE|REF-XML-STRING|XML-STRING|FILENAME|FILEHANDLE|KNOWN)
-
-See L<XML::Compile/"Compilers">
-
-=item $obj-E<gt>B<initParser>(OPTIONS)
-
-=item Google::Merchant::AtomFeed-E<gt>B<initParser>(OPTIONS)
-
-See L<XML::Compile/"Compilers">
-
-=item $obj-E<gt>B<reader>(TYPE|NAME, OPTIONS)
-
-See L<XML::Compile::Cache/"Compilers">
-
-=item $obj-E<gt>B<template>('XML'|'PERL'|'TREE', ELEMENT, OPTIONS)
-
-See L<XML::Compile::Schema/"Compilers">
-
-=item $obj-E<gt>B<writer>(TYPE|NAME)
-
-See L<XML::Compile::Cache/"Compilers">
-
-=back
-
-=head2 Administration
-
-See L<documentation in base class|Google::Merchant/"Administration">.
- 
-=over 4
-
-=item $obj-E<gt>B<declare>('READER'|'WRITER'|'RW', TYPE|ARRAY-of-TYPES, OPTIONS)
-
-See L<XML::Compile::Cache/"Administration">
-
-=item $obj-E<gt>B<doesExtend>(EXTTYPE, BASETYPE)
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<elements>()
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<findName>(NAME)
-
-See L<XML::Compile::Cache/"Administration">
-
-=item $obj-E<gt>B<findSchemaFile>(FILENAME)
-
-=item Google::Merchant::AtomFeed-E<gt>B<findSchemaFile>(FILENAME)
-
-See L<XML::Compile/"Administration">
-
-=item $obj-E<gt>B<importDefinitions>(XMLDATA, OPTIONS)
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<knownNamespace>(NAMESPACE|PAIRS)
-
-=item Google::Merchant::AtomFeed-E<gt>B<knownNamespace>(NAMESPACE|PAIRS)
-
-See L<XML::Compile/"Administration">
-
-=item $obj-E<gt>B<namespaces>()
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<printIndex>([FILEHANDLE], OPTIONS)
-
-See L<XML::Compile::Cache/"Administration">
-
-=item $obj-E<gt>B<types>()
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<walkTree>(NODE, CODE)
-
-See L<XML::Compile/"Administration">
+See L<Google::Merchant/"Accessors">
 
 =back
 
@@ -328,13 +102,9 @@ See L<Google::Merchant/"Feed handling">
 
 See L<documentation in base class|Google::Merchant/"DETAILS">.
  
-=head1 DESCRIPTIONS
-
-See L<documentation in base class|Google::Merchant/"DESCRIPTIONS">.
- 
 =head1 SEE ALSO
 
-This module is part of Google-Merchant distribution version 0.10,
+This module is part of Google-Merchant distribution version 0.11,
 built on May 13, 2013. Website: F<http://perl.overmeer.net/xml-compile/>
 
 Other distributions in this suite:
@@ -350,8 +120,7 @@ L<XML::Compile::Tester>,
 L<XML::Compile::Cache>,
 L<XML::Compile::Dumper>,
 L<XML::Compile::RPC>,
-L<XML::Rewrite>,
-L<XML::eXistDB>,
+L<XML::Rewrite>
 and
 L<XML::LibXML::Simple>.
 

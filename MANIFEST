@@ -1,6 +1,7 @@
 ChangeLog
 MANIFEST
 Makefile.PL
+PODTAIL.txt
 README
 examples/atom-template.dd
 examples/atom_feed.xml
@@ -16,6 +17,7 @@ lib/Google/Merchant/xsd/atom-2005.xsd
 lib/Google/Merchant/xsd/google-base-10-bug.xsd
 lib/Google/Merchant/xsd/google-base-10.xsd
 t/10atom.t
+t/11custom.t
 xt/99pod.t
 META.yml                                 Module YAML meta-data (added by MakeMaker)
 META.json                                Module JSON meta-data (added by MakeMaker)

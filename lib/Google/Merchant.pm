@@ -7,45 +7,64 @@ use strict;
 
 package Google::Merchant;
 use vars '$VERSION';
-$VERSION = '0.10';
+$VERSION = '0.11';
 
-use base 'XML::Compile::Cache';
 
 use Log::Report 'google-merchant';
 
+use XML::Compile::Cache    ();
+use XML::LibXML            ();
 use Google::Merchant::Util ':ns10';
 use Scalar::Util           'blessed';
-use XML::LibXML            ();
 
+my $schemas;
+
+
+sub new($%) { my $class = shift; (bless {}, $class)->init( {@_} ) }
 
 sub init($)
 {   my ($self, $args) = @_;
-    $self->SUPER::init($args);
 
-    # prefixes must be kept short, to reduce transported file size
-    $self->prefixes(g => NS_GOOGLE_BASE10, c => NS_GOOGLE_CUSTOM10);
-    $self->_loadXSD('google-base-10.xsd');
-    $self->_loadXSD('google-base-10-bug.xsd');
+    unless($schemas)
+    {   $schemas = $self->_loadSchemas;
+        $schemas->compileAll;
+    }
 
-    $self->declare(WRITER => 'g:item', hooks =>
+    $self->{GM_feed}        = {};
+    $self->{GM_string_format} = $args->{string_format} || 'HTML';
+    $self;
+}
+
+sub _loadSchemas()
+{   my $self = shift;
+
+    $schemas = XML::Compile::Cache->new
+      ( # prefixes must be kept short, to reduce transported file size
+        prefixes    => [g => NS_GOOGLE_BASE10, c => NS_GOOGLE_CUSTOM10]
+      , any_element => 'TAKE_ALL'
+      );
+    $self->_loadXSD($schemas, 'google-base-10.xsd')
+         ->_loadXSD($schemas, 'google-base-10-bug.xsd');
+
+    $schemas->declare(WRITER => 'g:item', hooks =>
       [ { type    => 'g:stringAttrValueType'
         , replace => sub {$self->_write_string(@_)} }
       ] );
 
-    $self->{GM_feed}        = {};
-    $self->{GM_string_format} = $args->{string_format} || 'HTML';
-
-    $self;
+    $schemas;
 }
 
 sub _loadXSD($)
-{   my ($self, $schema_fn) = @_;
+{   my ($self, $schemas, $schema_fn) = @_;
     (my $fn = __FILE__) =~ s!([/\\])(\w+)\.pm$!$1$2$1xsd$1$schema_fn!;
-    $self->importDefinitions($fn);
+    $schemas->importDefinitions($fn);
     $self;
 }
 
-sub _feed() { shift->{GM_feed} }
+#---------
+
+sub feed()    {shift->{GM_feed}}
+sub schemas() {$schemas}
 
 #---------
 
@@ -66,7 +85,7 @@ sub _baseItem($)
 sub write($%)
 {   my ($self, $fn, %args) = @_;
     $args{doc}  ||= XML::LibXML::Document->new('1.0', 'UTF-8');
-    $args{feed}   = $self->_feed;
+    $args{feed}   = $self->feed;
     $self->_write($fn, \%args);
 }
 
@@ -74,7 +93,7 @@ sub _write($$) { panic "not implemented" }
 
 sub _write_base_entry($$)
 {   my ($self, $doc, $base) = @_;
-    $self->writer('g:item')->($doc, $base);
+    $self->schemas->writer('g:item')->($doc, $base);
 }
 
 sub _write_string($$$$$)

@@ -6,11 +6,6 @@ Google::Merchant - provide Google shop with product info
 
 =head1 INHERITANCE
 
- Google::Merchant
-   is a XML::Compile::Cache
-   is a XML::Compile::Schema
-   is a XML::Compile
-
  Google::Merchant is extended by
    Google::Merchant::AtomFeed
 
@@ -50,67 +45,20 @@ the examples shown by Google: they do not use the schema themselves,
 nearly all examples will fail validation!  Especially, the strict order
 of elements in a sequence is ignored by Google's examples.
 
-See L<documentation in base class|XML::Compile::Cache/"DESCRIPTION">.
- 
 =head1 METHODS
 
-See L<documentation in base class|XML::Compile::Cache/"METHODS">.
- 
 =head2 Constructors
 
-See L<documentation in base class|XML::Compile::Cache/"Constructors">.
- 
 =over 4
 
 =item Google::Merchant-E<gt>B<new>(OPTIONS)
 
- -Option            --Defined in          --Default
-  allow_undeclared    XML::Compile::Cache   <false>
-  any_element         XML::Compile::Cache   'SKIP_ALL'
-  block_namespace     XML::Compile::Schema  []
-  hook                XML::Compile::Schema  undef
-  hooks               XML::Compile::Schema  []
-  ignore_unused_tags  XML::Compile::Schema  <false>
-  key_rewrite         XML::Compile::Schema  []
-  opts_readers        XML::Compile::Cache   []
-  opts_rw             XML::Compile::Cache   []
-  opts_writers        XML::Compile::Cache   []
-  parser_options      XML::Compile          <many>
-  prefixes            XML::Compile::Cache   <smart>
-  schema_dirs         XML::Compile          undef
-  string_format                             'HTML'
-  title                                     <required>
-  typemap             XML::Compile::Cache   {}
-  website                                   <required>
-  xsi_type            XML::Compile::Cache   {}
+ -Option       --Default
+  string_format  'HTML'
+  title          <required>
+  website        <required>
 
 =over 2
-
-=item allow_undeclared => BOOLEAN
-
-=item any_element => CODE|'TAKE_ALL'|'SKIP_ALL'|'ATTEMPT'|'SLOPPY'
-
-=item block_namespace => NAMESPACE|TYPE|HASH|CODE|ARRAY
-
-=item hook => ARRAY-WITH-HOOKDATA | HOOK
-
-=item hooks => ARRAY-OF-HOOK
-
-=item ignore_unused_tags => BOOLEAN|REGEXP
-
-=item key_rewrite => HASH|CODE|ARRAY-of-HASH-and-CODE
-
-=item opts_readers => HASH|ARRAY-of-PAIRS
-
-=item opts_rw => HASH|ARRAY-of-PAIRS
-
-=item opts_writers => HASH|ARRAY-of-PAIRS
-
-=item parser_options => HASH|ARRAY
-
-=item prefixes => HASH|ARRAY-of-PAIRS
-
-=item schema_dirs => DIRECTORY|ARRAY-OF-DIRECTORIES
 
 =item string_format => 'TEXT'|'HTML'|'XHTML'
 
@@ -122,11 +70,7 @@ HTML encoded strings are included as CDATA if they contain an ampersand '&'.
 
 =item title => STRING
 
-=item typemap => HASH|ARRAY
-
 =item website => URI
-
-=item xsi_type => HASH|ARRAY
 
 =back
 
@@ -134,195 +78,11 @@ HTML encoded strings are included as CDATA if they contain an ampersand '&'.
 
 =head2 Accessors
 
-See L<documentation in base class|XML::Compile::Cache/"Accessors">.
- 
 =over 4
 
-=item $obj-E<gt>B<addHook>(HOOKDATA|HOOK|undef)
+=item $obj-E<gt>B<feed>()
 
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addHooks>(HOOK, [HOOK, ...])
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addKeyRewrite>(PREDEF|CODE|HASH, ...)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addSchemaDirs>(DIRECTORIES|FILENAME)
-
-=item Google::Merchant-E<gt>B<addSchemaDirs>(DIRECTORIES|FILENAME)
-
-See L<XML::Compile/"Accessors">
-
-=item $obj-E<gt>B<addSchemas>(XML, OPTIONS)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addTypemap>(PAIR)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<addTypemaps>(PAIRS)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<allowUndeclared>([BOOLEAN])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<anyElement>('ATTEMPT'|'SLOPPY'|'SKIP_ALL'|'TAKE_ALL'|CODE)
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<blockNamespace>(NAMESPACE|TYPE|HASH|CODE|ARRAY)
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<hooks>()
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<typemap>([HASH|ARRAY|PAIRS])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<useSchema>(SCHEMA, [SCHEMA])
-
-See L<XML::Compile::Schema/"Accessors">
-
-=item $obj-E<gt>B<xsiType>([HASH|ARRAY|LIST])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=back
-
-=head2 Prefix management
-
-See L<documentation in base class|XML::Compile::Cache/"Prefix management">.
- 
-=over 4
-
-=item $obj-E<gt>B<learnPrefixes>(NODE)
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefix>(PREFIX)
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefixFor>(URI)
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefixed>(TYPE|(NAMESPACE,LOCAL))
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=item $obj-E<gt>B<prefixes>([PAIRS|ARRAY|HASH])
-
-See L<XML::Compile::Cache/"Prefix management">
-
-=back
-
-=head2 Compilers
-
-See L<documentation in base class|XML::Compile::Cache/"Compilers">.
- 
-=over 4
-
-=item $obj-E<gt>B<addCompileOptions>(['READERS'|'WRITERS'|'RW'], OPTIONS)
-
-See L<XML::Compile::Cache/"Compilers">
-
-=item $obj-E<gt>B<compile>(('READER'|'WRITER'), TYPE, OPTIONS)
-
-See L<XML::Compile::Schema/"Compilers">
-
-=item $obj-E<gt>B<compileAll>(['READERS'|'WRITERS'|'RW', [NAMESPACE]])
-
-See L<XML::Compile::Cache/"Compilers">
-
-=item $obj-E<gt>B<dataToXML>(NODE|REF-XML-STRING|XML-STRING|FILENAME|FILEHANDLE|KNOWN)
-
-=item Google::Merchant-E<gt>B<dataToXML>(NODE|REF-XML-STRING|XML-STRING|FILENAME|FILEHANDLE|KNOWN)
-
-See L<XML::Compile/"Compilers">
-
-=item $obj-E<gt>B<initParser>(OPTIONS)
-
-=item Google::Merchant-E<gt>B<initParser>(OPTIONS)
-
-See L<XML::Compile/"Compilers">
-
-=item $obj-E<gt>B<reader>(TYPE|NAME, OPTIONS)
-
-See L<XML::Compile::Cache/"Compilers">
-
-=item $obj-E<gt>B<template>('XML'|'PERL'|'TREE', ELEMENT, OPTIONS)
-
-See L<XML::Compile::Schema/"Compilers">
-
-=item $obj-E<gt>B<writer>(TYPE|NAME)
-
-See L<XML::Compile::Cache/"Compilers">
-
-=back
-
-=head2 Administration
-
-See L<documentation in base class|XML::Compile::Cache/"Administration">.
- 
-=over 4
-
-=item $obj-E<gt>B<declare>('READER'|'WRITER'|'RW', TYPE|ARRAY-of-TYPES, OPTIONS)
-
-See L<XML::Compile::Cache/"Administration">
-
-=item $obj-E<gt>B<doesExtend>(EXTTYPE, BASETYPE)
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<elements>()
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<findName>(NAME)
-
-See L<XML::Compile::Cache/"Administration">
-
-=item $obj-E<gt>B<findSchemaFile>(FILENAME)
-
-=item Google::Merchant-E<gt>B<findSchemaFile>(FILENAME)
-
-See L<XML::Compile/"Administration">
-
-=item $obj-E<gt>B<importDefinitions>(XMLDATA, OPTIONS)
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<knownNamespace>(NAMESPACE|PAIRS)
-
-=item Google::Merchant-E<gt>B<knownNamespace>(NAMESPACE|PAIRS)
-
-See L<XML::Compile/"Administration">
-
-=item $obj-E<gt>B<namespaces>()
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<printIndex>([FILEHANDLE], OPTIONS)
-
-See L<XML::Compile::Cache/"Administration">
-
-=item $obj-E<gt>B<types>()
-
-See L<XML::Compile::Schema/"Administration">
-
-=item $obj-E<gt>B<walkTree>(NODE, CODE)
-
-See L<XML::Compile/"Administration">
+=item $obj-E<gt>B<schemas>()
 
 =back
 
@@ -373,40 +133,6 @@ file.
 
 =head1 DETAILS
 
-See L<documentation in base class|XML::Compile::Cache/"DETAILS">.
- 
-=head2 Comparison
-
-See L<documentation in base class|XML::Compile::Cache/"Comparison">.
- 
-=head2 Collecting definitions
-
-See L<documentation in base class|XML::Compile::Cache/"Collecting definitions">.
- 
-=head2 Addressing components
-
-See L<documentation in base class|XML::Compile::Cache/"Addressing components">.
- 
-=head2 Representing data-structures
-
-See L<documentation in base class|XML::Compile::Cache/"Representing data-structures">.
- 
-=head2 Schema hooks
-
-See L<documentation in base class|XML::Compile::Cache/"Schema hooks">.
- 
-=head2 Typemaps
-
-See L<documentation in base class|XML::Compile::Cache/"Typemaps">.
- 
-=head2 Handling xsi:type
-
-See L<documentation in base class|XML::Compile::Cache/"Handling xsi:type">.
- 
-=head2 Key rewrite
-
-See L<documentation in base class|XML::Compile::Cache/"Key rewrite">.
- 
 =head2 Item fields
 
 The RSS interface defines an 'Item', and Google uses that term as well to
@@ -456,13 +182,32 @@ diverge from the default:
                }
     );
 
-=head1 DESCRIPTIONS
+=head3 custom fields
 
-See L<documentation in base class|XML::Compile::Cache/"DESCRIPTIONS">.
- 
+When you want custom fields, you have to build elements by hand.  These
+elements must be in the NS_GOOGLE_CUSTOM namespace, and use the same
+C<$doc> element as the writer.
+
+  use Google::Merchant::Util ':ns10';
+
+  my $doc    = XML::LibXML::Document->new('1.0', 'UTF-8');
+  my $profit = $doc->createElementNS(NS_GOOGLE_CUSTOM10, 'profit', '10.5 EUR');
+  $profit->setAttribute(elementType => 'floatUnit');
+
+  $feed->addItem
+    ( brand      => '&gt;&quot;&lt'     # default, here HTML
+    , isbn       => { type => 'TEXT', _ => '<">' }
+    , 'c:profit' => $profit
+    );
+
+  $feed->writer($fn, doc => $doc);
+  
+When your custom extensions, you can implement it nicer.  I will not
+explain that here until someone needs it ;-)
+
 =head1 SEE ALSO
 
-This module is part of Google-Merchant distribution version 0.10,
+This module is part of Google-Merchant distribution version 0.11,
 built on May 13, 2013. Website: F<http://perl.overmeer.net/xml-compile/>
 
 Other distributions in this suite:
@@ -478,8 +223,7 @@ L<XML::Compile::Tester>,
 L<XML::Compile::Cache>,
 L<XML::Compile::Dumper>,
 L<XML::Compile::RPC>,
-L<XML::Rewrite>,
-L<XML::eXistDB>,
+L<XML::Rewrite>
 and
 L<XML::LibXML::Simple>.
 

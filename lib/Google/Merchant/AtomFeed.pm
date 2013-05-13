@@ -7,7 +7,7 @@ use strict;
 
 package Google::Merchant::AtomFeed;
 use vars '$VERSION';
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 use base 'Google::Merchant';
 
@@ -19,23 +19,6 @@ use XML::Compile::Util qw/XMLNS/;
 sub init($)
 {   my ($self, $args) = @_;
     $self->SUPER::init($args);
-
-    $self->prefixes(a => 'http://www.w3.org/2005/Atom');
-    $self->_loadXSD('atom-2005.xsd');
-    $self->importDefinitions(XMLNS);
-    $self->declare
-      ( WRITER => 'a:feed'
-      , mixed_elements => 'STRUCTURAL'
-      , hook   =>
-         [ +{ type    => 'a:textType'
-            , replace => sub {$self->_write_texttype(@_) }
-            }
-         , +{ type    => 'a:entryType'
-            , replace => sub {$self->_write_entrytype(@_)}
-            }
-         ]
-      );
-    $self->compileAll;
 
     my $title  = $args->{title}   || panic "feed title required";
     my $site   = $args->{website} || panic "feed website required";
@@ -51,12 +34,35 @@ sub init($)
     }
     push @globs, +{entry => ($self->{GMA_entries} = []) };
 
-    my $feed = $self->_feed;
+    my $feed = $self->feed;
     $feed->{cho_author} = \@globs;
     $feed->{base} = $args->{base} || $site;
     $feed->{lang} = $args->{language};
 
     $self;
+}
+
+sub _loadSchemas()
+{   my $self = shift;
+    my $schemas = $self->SUPER::_loadSchemas();
+
+    $schemas->prefixes(a => 'http://www.w3.org/2005/Atom');
+    $self->_loadXSD($schemas, 'atom-2005.xsd');
+    $schemas->importDefinitions(XMLNS);
+    $schemas->declare
+      ( WRITER => 'a:feed'
+      , mixed_elements => 'STRUCTURAL'
+      , hook   =>
+         [ +{ type    => 'a:textType'
+            , replace => sub {$self->_write_texttype(@_) }
+            }
+         , +{ type    => 'a:entryType'
+            , replace => sub {$self->_write_entrytype(@_)}
+            }
+         ]
+      );
+
+    $schemas;
 }
 
 #---------
@@ -85,7 +91,7 @@ sub _write($$)
     my $format = $args->{beautify} || 0;
     my $doc    = $args->{doc};
 
-    my $root   = $self->writer('a:feed')->($doc, $args->{feed});
+    my $root   = $self->schemas->writer('a:feed')->($doc, $args->{feed});
     $doc->setDocumentElement($root);
     $doc->setCompression($args->{gzip}) if defined $args->{gzip};
     $doc->toFile($fn, $format);
