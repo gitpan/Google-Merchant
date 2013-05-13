@@ -1,0 +1,557 @@
+# Describing complex g:item
+#     {http://base.google.com/ns/1.0}item
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Fri May 10 22:59:23 2013
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:g         http://base.google.com/ns/1.0
+
+# is a g:itemType
+{ # sequence of sequence, sequence, sequence, sequence
+
+  # sequence of description, link, title, id
+
+  # is a xs:string
+  # is optional
+  description => "example",
+
+  # is a xs:anyURI
+  # is optional
+  link => "http://example.com",
+
+  # is a xs:string
+  title => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  id => "example",
+
+  # sequence of shipping
+
+  # is a g:shippingType
+  # occurs 0 <= # <= 10 times
+  shipping =>
+  [ { # sequence of country, service, price
+
+      # is a xs:string
+      # Enum: AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ
+      #    BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY
+      #    BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CS CU CV CX
+      #    CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK
+      #    FM FO FR GA GB GD GE GF GH GI GL GM GN GP GQ GR GS GT
+      #    GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT
+      #    JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI
+      #    LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP
+      #    MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO
+      #    NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW
+      #    PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM
+      #    SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO
+      #    TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU
+      #    WF WS YE YT ZA ZM ZW
+      country => "AD",
+
+      # is a xs:string
+      # length <= 1000
+      service => "example",
+
+      # is a xs:decimal
+      # value >= 0
+      price => 3.1415, }, ],
+
+  # sequence of actor, age, agent, apparel_type, area, artist,
+  #   author, bathrooms, bedrooms, brand, color, condition,
+  #   course_date_range, course_number, course_times, currency,
+  #   delivery_notes, delivery_radius, development_status,
+  #   education, employer, ethnicity, event_date_range,
+  #   expiration_date, expiration_date_time, for_sale, format,
+  #   from_location, gender, hoa_dues, image_link,
+  #   immigration_status, interested_in, isbn, related_link,
+  #   job_function, job_industry, job_type, label, license,
+  #   listing_type, location, make, manufacturer, manufacturer_id,
+  #   marital_status, megapixels, memory, mileage, model,
+  #   model_number, name_of_item_reviewed, news_source,
+  #   occupation, operating_systems, pages, payment_accepted,
+  #   payment_notes, pickup, price, price_type, processor_speed,
+  #   product_type, programming_language, property_type,
+  #   publication_name, publication_volume, publish_date,
+  #   quantity, rating, rating_type, review_type, reviewer_type,
+  #   salary, salary_type, school_district, service_type,
+  #   sexual_orientation, size, square_footage, subject,
+  #   subject_area, tax_region, tax_percent, to_location,
+  #   travel_date_range, university, upc, url_of_item_reviewed,
+  #   vehicle_type, vin, weight, year
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  actor => [ "example", ],
+
+  # is a xs:unsignedByte
+  # is optional
+  age => 2,
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  agent => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  apparel_type => "example",
+
+  # is a xs:string
+  # is optional
+  area => "example",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  artist => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  author => [ "example", ],
+
+  # is a xs:decimal
+  # is optional
+  # value >= 0
+  bathrooms => 3.1415,
+
+  # is a xs:unsignedByte
+  # is optional
+  bedrooms => 2,
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  brand => "example",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  color => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  condition => "example",
+
+  # is a g:dateTimeRangeType
+  # is optional
+  course_date_range =>
+  { # sequence of start, end
+
+    # is a xs:dateTime
+    start => "2006-10-06T00:23:02Z",
+
+    # is a xs:dateTime
+    # is optional
+    end => "2006-10-06T00:23:02Z", },
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  course_number => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  course_times => "example",
+
+  # is a xs:string
+  # is optional
+  # Enum: AED AFA ALL AMD ANG AOA ARS AUD AWG AZM BAM BBD
+  #    BDT BGN BHD BIF BMD BND BOB BRL BSD BTN BWP BYR BZD
+  #    CAD CDF CHF CLP CNY CRC CSD CUP CVE CYP CZK DJF DKK
+  #    DOP DZD EEK EGP ERN ETB EUR FJD FKP GBP GEL GGP GHC
+  #    GIP GMD GNF GTQ GYD HKD HNL HRK HTG HUF IDR ILS IMP
+  #    INR IQD IRR ISK JEP JMD JOD JPY KES KGS KHR KMF KPW
+  #    KRW KWD KYD KZT LAK LBP LKR LRD LSL LTL LVL LYD MAD
+  #    MDL MGA MKD MMK MNT MOP MRO MTL MUR MVR MWK MXN MYR
+  #    MZM NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR
+  #    PLN PYG QAR RON RUB RWF SAR SBD SCR SDD SEK SGD SHP
+  #    SIT SKK SLL SOS SPL SRD STD SVC SYP SZL THB TJS TMM
+  #    TND TOP TRL TRY TTD TVD TWD TZS UAH UGX USD UYU UZS
+  #    VEB VND VUV WST XAF XAG XAU XCD XDR XOF XPD XPF XPT
+  #    YER ZAR ZMK ZWD
+  currency => "AED",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  delivery_notes => "example",
+
+  # is a xs:string
+  # is optional
+  delivery_radius => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  development_status => "example",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  education => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  employer => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  ethnicity => [ "example", ],
+
+  # is a g:dateTimeRangeType
+  # complex structure shown above
+  # is optional
+  event_date_range => {},
+
+  # is a xs:date
+  # is optional
+  expiration_date => "2006-10-06",
+
+  # is a xs:dateTime
+  # is optional
+  expiration_date_time => "2006-10-06T00:23:02Z",
+
+  # is a xs:boolean
+  # is optional
+  for_sale => "true",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  format => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 256
+  from_location => "example",
+
+  # is a xs:string
+  # is optional
+  # Enum: F M female male
+  gender => "male",
+
+  # is a xs:decimal
+  # is optional
+  # value >= 0
+  hoa_dues => 3.1415,
+
+  # is a xs:anyURI
+  # occurs 0 <= # <= 10 times
+  image_link => [ "http://example.com", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  immigration_status => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  interested_in => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  isbn => "example",
+
+  # is a xs:anyURI
+  # occurs 0 <= # <= 10 times
+  related_link => [ "http://example.com", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  job_function => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  job_industry => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  job_type => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  label => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  license => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  listing_type => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 256
+  location => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  make => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  manufacturer => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  manufacturer_id => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  marital_status => "example",
+
+  # is a xs:string
+  # is optional
+  megapixels => "example",
+
+  # is a xs:string
+  # is optional
+  memory => "example",
+
+  # is a xs:string
+  # is optional
+  mileage => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  model => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  model_number => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  name_of_item_reviewed => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  news_source => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  occupation => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  operating_systems => "example",
+
+  # is a xs:unsignedLong
+  # is optional
+  pages => 100,
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # Enum: AmericanExpress Cash Check Discover MasterCard
+  #    PayPal Visa WireTransfer
+  payment_accepted => [ "Cash", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  payment_notes => "example",
+
+  # is a xs:boolean
+  # is optional
+  pickup => "true",
+
+  # is a xs:string
+  # is optional
+  price => "example",
+
+  # is a xs:string
+  # is optional
+  # Enum: negotiable starting
+  price_type => "negotiable",
+
+  # is a xs:string
+  # is optional
+  processor_speed => "example",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  product_type => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  programming_language => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  property_type => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  publication_name => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  publication_volume => "example",
+
+  # is a xs:date
+  # is optional
+  publish_date => "2006-10-06",
+
+  # is a xs:unsignedLong
+  # is optional
+  quantity => 100,
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  rating => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  rating_type => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  review_type => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  reviewer_type => "example",
+
+  # is a xs:decimal
+  # is optional
+  # value >= 0
+  salary => 3.1415,
+
+  # is a xs:string
+  # is optional
+  # Enum: negotiable starting
+  salary_type => "negotiable",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  school_district => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  service_type => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  sexual_orientation => "example",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  size => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  square_footage => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  subject => [ "example", ],
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  subject_area => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  tax_region => "example",
+
+  # is a xs:decimal
+  # is optional
+  # value <= 100
+  # value >= 0
+  tax_percent => 3.1415,
+
+  # is a xs:string
+  # is optional
+  # length <= 256
+  to_location => "example",
+
+  # is a g:dateTimeRangeType
+  # complex structure shown above
+  # is optional
+  travel_date_range => {},
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  university => "example",
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  upc => "example",
+
+  # is a xs:anyURI
+  # is optional
+  url_of_item_reviewed => "http://example.com",
+
+  # is a xs:string
+  # occurs 0 <= # <= 10 times
+  # length <= 1000
+  vehicle_type => [ "example", ],
+
+  # is a xs:string
+  # is optional
+  # length <= 1000
+  vin => "example",
+
+  # is a xs:string
+  # is optional
+  weight => "example",
+
+  # is a xs:gYear
+  # is optional
+  year => "2006+07:00",
+
+  # sequence of ANY
+
+  # any element in http://base.google.com/cns/1.0
+  # occurs 0 <= # <= 20 times
+  ANY => [ "Anything", ], }

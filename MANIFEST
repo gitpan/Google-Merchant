@@ -1,0 +1,21 @@
+ChangeLog
+MANIFEST
+Makefile.PL
+README
+examples/atom-template.dd
+examples/atom_feed.xml
+examples/item-template.dd
+examples/rss_feed.xml
+lib/Google/Merchant.pm
+lib/Google/Merchant.pod
+lib/Google/Merchant/AtomFeed.pm
+lib/Google/Merchant/AtomFeed.pod
+lib/Google/Merchant/Util.pm
+lib/Google/Merchant/Util.pod
+lib/Google/Merchant/xsd/atom-2005.xsd
+lib/Google/Merchant/xsd/google-base-10-bug.xsd
+lib/Google/Merchant/xsd/google-base-10.xsd
+t/10atom.t
+xt/99pod.t
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gn="http://base.google.com/ns/1.0" targetNamespace="http://base.google.com/ns/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:group name="baseElementGroup">
+    <xs:annotation>
+      <xs:documentation> 
+        The original group is broken in many ways: name-space, field
+        type and occurence.  We overrule it.
+      </xs:documentation> 
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="gn:id" minOccurs="0"/>
+    </xs:sequence>
+  </xs:group>
+
+</xs:schema>

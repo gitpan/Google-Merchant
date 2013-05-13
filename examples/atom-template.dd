@@ -1,0 +1,578 @@
+1..5
+ok 1 - use Google::Merchant::AtomFeed;
+# Describing complex a:feed
+#     {http://www.w3.org/2005/Atom}feed
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Fri May 10 16:08:18 2013
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:a         http://www.w3.org/2005/Atom
+
+# is an a:feedType
+{ # choice of author, category, contributor, generator, icon,
+  #   id, link, logo, rights, subtitle, title, updated, entry, ANY
+  # occurs 3 <= # <= unbounded times
+  cho_author => 
+  [ {
+      # is an a:personType
+      # occurs any number of times
+      author =>
+      [ { # choice of name, uri, email, ANY
+          # occurs 1 <= # <= unbounded times
+          cho_name => 
+          [ {
+              # is a xs:string
+              name => "example",
+
+              # is an a:uriType
+              # uri is simple value with attributes
+              # is optional
+              uri =>
+              { # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # is a xs:anyURI
+                # string content of the container
+                _ => "http://example.com", },
+
+              # is a xs:normalizedString
+              # is optional
+              # Pattern: \w+@(\w+\.)+\w+
+              email => "example",
+
+              # any element not in a:
+              ANY => "Anything", },
+          ],
+
+          # is a xs:anyURI
+          base => "http://example.com",
+
+          # one of the following (union)
+          #  - is a xs:language
+          #  - is a xs:string
+          #    Enum: 
+          lang => "nl-NL",
+
+          # any attribute not in a:
+          ANYATTR => "AnySimple", }, ],
+
+      # is an a:categoryType
+      # occurs any number of times
+      category =>
+      [ { # is a xs:string
+          # attribute term is required
+          term => "example",
+
+          # is a xs:anyURI
+          scheme => "http://example.com",
+
+          # is a xs:string
+          label => "example",
+
+          # is a xs:anyURI
+          base => "http://example.com",
+
+          # one of the following (union)
+          #  - is a xs:language
+          #  - is a xs:string
+          #    Enum: 
+          lang => "nl-NL",
+
+          # any attribute not in a:
+          ANYATTR => "AnySimple", }, ],
+
+      # is an a:personType
+      # complex structure shown above
+      # occurs any number of times
+      contributor => {},
+
+      # is an a:generatorType
+      # generator is simple value with attributes
+      # is optional
+      generator =>
+      { # is a xs:anyURI
+        uri => "http://example.com",
+
+        # is a xs:string
+        version => "example",
+
+        # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # is a xs:string
+        # string content of the container
+        _ => "example", },
+
+      # is an a:iconType
+      # icon is simple value with attributes
+      # is optional
+      icon =>
+      { # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # is a xs:anyURI
+        # string content of the container
+        _ => "http://example.com", },
+
+      # is an a:idType
+      # id is simple value with attributes
+      id =>
+      { # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # is a xs:anyURI
+        # string content of the container
+        _ => "http://example.com", },
+
+      # is an a:linkType
+      # link has a mixed content
+      # occurs any number of times
+      link =>
+      [ { # is a xs:anyURI
+          # attribute href is required
+          href => "http://example.com",
+
+          # is a xs:string
+          rel => "example",
+
+          # is a xs:string
+          type => "example",
+
+          # is a xs:NMTOKEN
+          hreflang => "nmtoken",
+
+          # is a xs:string
+          title => "example",
+
+          # is a xs:positiveInteger
+          length => +3,
+
+          # is a xs:anyURI
+          base => "http://example.com",
+
+          # one of the following (union)
+          #  - is a xs:language
+          #  - is a xs:string
+          #    Enum: 
+          lang => "nl-NL",
+
+          # any attribute not in a:
+          ANYATTR => "AnySimple",
+
+          # mixed content cannot be processed automatically
+          _ => XML::LibXML::Element->new('link'), }, ],
+
+      # is an a:logoType
+      # logo is simple value with attributes
+      # is optional
+      logo =>
+      { # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # is a xs:anyURI
+        # string content of the container
+        _ => "http://example.com", },
+
+      # is an a:textType
+      # rights has a mixed content
+      # is optional
+      rights =>
+      { # is a xs:token
+        # Enum: html text xhtml
+        type => "text",
+
+        # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # mixed content cannot be processed automatically
+        _ => XML::LibXML::Element->new('rights'), },
+
+      # is an a:textType
+      # subtitle has a mixed content
+      # is optional
+      subtitle =>
+      { # is a xs:token
+        # Enum: html text xhtml
+        type => "text",
+
+        # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # mixed content cannot be processed automatically
+        _ => XML::LibXML::Element->new('subtitle'), },
+
+      # is an a:textType
+      # title has a mixed content
+      title =>
+      { # is a xs:token
+        # Enum: html text xhtml
+        type => "text",
+
+        # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # mixed content cannot be processed automatically
+        _ => XML::LibXML::Element->new('title'), },
+
+      # is an a:dateTimeType
+      # updated is simple value with attributes
+      updated =>
+      { # is a xs:anyURI
+        base => "http://example.com",
+
+        # one of the following (union)
+        #  - is a xs:language
+        #  - is a xs:string
+        #    Enum: 
+        lang => "nl-NL",
+
+        # any attribute not in a:
+        ANYATTR => "AnySimple",
+
+        # is a xs:dateTime
+        # string content of the container
+        _ => "2006-10-06T00:23:02Z", },
+
+      # is an a:entryType
+      # occurs any number of times
+      entry =>
+      [ { # choice of author, category, content, contributor, id, link,
+          #   published, rights, source, summary, title, updated, ANY
+          # occurs 1 <= # <= unbounded times
+          cho_author => 
+          [ {
+              # is an a:personType
+              # complex structure shown above
+              # occurs any number of times
+              author => {},
+
+              # is an a:categoryType
+              # complex structure shown above
+              # occurs any number of times
+              category => {},
+
+              # is an a:contentType
+              # content has a mixed content
+              # is optional
+              content =>
+              { # is a xs:string
+                type => "example",
+
+                # is a xs:anyURI
+                src => "http://example.com",
+
+                # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # mixed content cannot be processed automatically
+                _ => XML::LibXML::Element->new('content'), },
+
+              # is an a:personType
+              # complex structure shown above
+              # occurs any number of times
+              contributor => {},
+
+              # is an a:idType
+              # id is simple value with attributes
+              id =>
+              { # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # is a xs:anyURI
+                # string content of the container
+                _ => "http://example.com", },
+
+              # is an a:linkType
+              # link has a mixed content
+              # occurs any number of times
+              link =>
+              [ { # is a xs:anyURI
+                  # attribute href is required
+                  href => "http://example.com",
+
+                  # is a xs:string
+                  rel => "example",
+
+                  # is a xs:string
+                  type => "example",
+
+                  # is a xs:NMTOKEN
+                  hreflang => "nmtoken",
+
+                  # is a xs:string
+                  title => "example",
+
+                  # is a xs:positiveInteger
+                  length => +3,
+
+                  # is a xs:anyURI
+                  base => "http://example.com",
+
+                  # one of the following (union)
+                  #  - is a xs:language
+                  #  - is a xs:string
+                  #    Enum: 
+                  lang => "nl-NL",
+
+                  # any attribute not in a:
+                  ANYATTR => "AnySimple",
+
+                  # mixed content cannot be processed automatically
+                  _ => XML::LibXML::Element->new('link'), }, ],
+
+              # is an a:dateTimeType
+              # published is simple value with attributes
+              # is optional
+              published =>
+              { # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # is a xs:dateTime
+                # string content of the container
+                _ => "2006-10-06T00:23:02Z", },
+
+              # is an a:textType
+              # rights has a mixed content
+              # is optional
+              rights =>
+              { # is a xs:token
+                # Enum: html text xhtml
+                type => "text",
+
+                # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # mixed content cannot be processed automatically
+                _ => XML::LibXML::Element->new('rights'), },
+
+              # is an a:textType
+              # source has a mixed content
+              # is optional
+              source =>
+              { # is a xs:token
+                # Enum: html text xhtml
+                type => "text",
+
+                # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # mixed content cannot be processed automatically
+                _ => XML::LibXML::Element->new('source'), },
+
+              # is an a:textType
+              # summary has a mixed content
+              # is optional
+              summary =>
+              { # is a xs:token
+                # Enum: html text xhtml
+                type => "text",
+
+                # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # mixed content cannot be processed automatically
+                _ => XML::LibXML::Element->new('summary'), },
+
+              # is an a:textType
+              # title has a mixed content
+              title =>
+              { # is a xs:token
+                # Enum: html text xhtml
+                type => "text",
+
+                # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # mixed content cannot be processed automatically
+                _ => XML::LibXML::Element->new('title'), },
+
+              # is an a:dateTimeType
+              # updated is simple value with attributes
+              updated =>
+              { # is a xs:anyURI
+                base => "http://example.com",
+
+                # one of the following (union)
+                #  - is a xs:language
+                #  - is a xs:string
+                #    Enum: 
+                lang => "nl-NL",
+
+                # any attribute not in a:
+                ANYATTR => "AnySimple",
+
+                # is a xs:dateTime
+                # string content of the container
+                _ => "2006-10-06T00:23:02Z", },
+
+              # any element not in a:
+              # occurs any number of times
+              ANY => [ "Anything", ], },
+          ],
+
+          # is a xs:anyURI
+          base => "http://example.com",
+
+          # one of the following (union)
+          #  - is a xs:language
+          #  - is a xs:string
+          #    Enum: 
+          lang => "nl-NL",
+
+          # any attribute not in a:
+          ANYATTR => "AnySimple", }, ],
+
+      # any element not in a:
+      # occurs any number of times
+      ANY => [ "Anything", ], },
+  ],
+
+  # is a xs:anyURI
+  base => "http://example.com",
+
+  # one of the following (union)
+  #  - is a xs:language
+  #  - is a xs:string
+  #    Enum: 
+  lang => "nl-NL",
+
+  # any attribute not in a:
+  ANYATTR => "AnySimple", }

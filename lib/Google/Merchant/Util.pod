@@ -1,0 +1,65 @@
+=encoding utf8
+
+=head1 NAME
+
+Google::Merchant::Util - helpers for Google::Merchant
+
+=head1 INHERITANCE
+
+ Google::Merchant::Util
+   is a Exporter
+
+=head1 SYNOPSIS
+
+  use Google::Merchant::Util ':ns';
+
+=head1 DESCRIPTION
+
+Provide some additional tools and constants to programs which use
+L<Google::Merchant|Google::Merchant>.
+
+For now, there is only very little here, but that may grow over time.
+
+=head1 FUNCTIONS
+
+=head2 Export tag :ns10
+
+Exports namespace constants which are useful in the Google-base v1.0
+context: NS_GOOGLE_BASE10 and NS_GOOGLE_CUSTOM10.
+
+=head1 SEE ALSO
+
+This module is part of Google-Merchant distribution version 0.10,
+built on May 13, 2013. Website: F<http://perl.overmeer.net/xml-compile/>
+
+Other distributions in this suite:
+L<XML::Compile>,
+L<XML::Compile::SOAP>,
+L<XML::Compile::SOAP12>,
+L<XML::Compile::SOAP::Daemon>,
+L<XML::Compile::SOAP::WSA>,
+L<XML::Compile::C14N>,
+L<XML::Compile::WSS>,
+L<XML::Compile::WSS::Signature>,
+L<XML::Compile::Tester>,
+L<XML::Compile::Cache>,
+L<XML::Compile::Dumper>,
+L<XML::Compile::RPC>,
+L<XML::Rewrite>,
+L<XML::eXistDB>,
+and
+L<XML::LibXML::Simple>.
+
+Please post questions or ideas to the mailinglist at
+F<http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/xml-compile> .
+For live contact with other developers, visit the C<#xml-compile> channel
+on C<irc.perl.org>.
+
+=head1 LICENSE
+
+Copyrights 2013 by [Mark Overmeer]. For other contributors see ChangeLog.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+See F<http://www.perl.com/perl/misc/Artistic.html>
+
