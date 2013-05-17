@@ -7,15 +7,16 @@ use strict;
 
 package Google::Merchant;
 use vars '$VERSION';
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 
 use Log::Report 'google-merchant';
 
 use XML::Compile::Cache    ();
 use XML::LibXML            ();
-use Google::Merchant::Util ':ns10';
-use Scalar::Util           'blessed';
+use Google::Merchant::Util qw/:ns10/;
+use Scalar::Util           qw/blessed/;
+use Encode                 qw/encode/;
 
 my $schemas;
 
@@ -109,10 +110,11 @@ sub _write_string($$$$$)
     {   $type = $self->stringFormat;
     }
 
-    $val = XML::LibXML::CDATASection->new($val)
-        if $type ne 'TEXT' && $val =~ m/\&/;
+    my $str = encode 'utf8', $val;
+    $str = XML::LibXML::CDATASection->new($str)
+        if $type ne 'TEXT' && $str =~ m/\&/;
 
-    $r->($doc, $val);
+    $r->($doc, $str);
 }
 
 #------------

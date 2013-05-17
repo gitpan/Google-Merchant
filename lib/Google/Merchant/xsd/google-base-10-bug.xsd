@@ -9,8 +9,28 @@
       </xs:documentation> 
     </xs:annotation>
     <xs:sequence>
+      <!-- kill a few options, which are defined in the wrong name-space -->
       <xs:element ref="gn:id" minOccurs="0"/>
+
+      <!-- the following elements are missing from the spec -->
+      <xs:element name="gtin" minOccurs="0" type="gn:stringAttrValueType" />
+      <xs:element name="mpn"  minOccurs="0" type="gn:stringAttrValueType" />
+      <xs:element name="availability" minOccurs="0" type="gn:availType"   />
+      <xs:element name="sale_price" minOccurs="0" type="gn:floatUnitType" />
+      <xs:element name="additional_image_link"
+            minOccurs="0" maxOccurs="10" type="xs:anyURI" />
+      <xs:element name="sale_price_effective_date"
+            minOccurs="0" type="gn:stringAttrValueType" />
     </xs:sequence>
   </xs:group>
+
+  <xs:simpleType name="availType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="in stock" />
+      <xs:enumeration value="available for order" />
+      <xs:enumeration value="out of stock" />
+      <xs:enumeration value="preorder" />
+    </xs:restriction>
+  </xs:simpleType>
 
 </xs:schema>

@@ -14,6 +14,7 @@ Google::Merchant - provide Google shop with product info
   my $feed = Google::Merchant::AtomFeed->new
     ( title   => 'My Webshop'
     , website => 'https://webshop.example.org'
+    , string_format => 'TEXT'
     );
 
   $feed->addItem
@@ -171,13 +172,15 @@ entities.  For instance, '&quot;' may become '&amp;quot;'.
 Set the best default with L<new(string_format)|Google::Merchant/"Constructors">.  Now, per field you may
 diverge from the default:
 
-  my $feed = Google::Merchant::AtomFeed->new(...
+  my $feed = Google::Merchant::AtomFeed->new
+    ( ...
     , string_format => 'HTML'
     );
   
   $feed->addItem
-    ( brand => '&gt;&quot;&lt'     # default, here HTML
-    , isbn  => { type => 'TEXT'
+    ( ...
+    , brand => '&gt;&quot;&lt'     # default, here HTML
+    , isbn  => { type => 'TEXT'    # overrule default
                , _    => '<">'
                }
     );
@@ -195,8 +198,7 @@ C<$doc> element as the writer.
   $profit->setAttribute(elementType => 'floatUnit');
 
   $feed->addItem
-    ( brand      => '&gt;&quot;&lt'     # default, here HTML
-    , isbn       => { type => 'TEXT', _ => '<">' }
+    ( ...
     , 'c:profit' => $profit
     );
 
@@ -207,34 +209,13 @@ explain that here until someone needs it ;-)
 
 =head1 SEE ALSO
 
-This module is part of Google-Merchant distribution version 0.11,
-built on May 13, 2013. Website: F<http://perl.overmeer.net/xml-compile/>
+This module is part of Google-Merchant distribution version 0.12,
+built on May 17, 2013. Website: F<http://perl.overmeer.net/xml-compile/>.
 
-Other distributions in this suite:
-L<XML::Compile>,
-L<XML::Compile::SOAP>,
-L<XML::Compile::SOAP12>,
-L<XML::Compile::SOAP::Daemon>,
-L<XML::Compile::SOAP::WSA>,
-L<XML::Compile::C14N>,
-L<XML::Compile::WSS>,
-L<XML::Compile::WSS::Signature>,
-L<XML::Compile::Tester>,
-L<XML::Compile::Cache>,
-L<XML::Compile::Dumper>,
-L<XML::Compile::RPC>,
-L<XML::Rewrite>
-and
-L<XML::LibXML::Simple>.
+=head1 COPYRIGHTS
 
-Please post questions or ideas to the mailinglist at
-F<http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/xml-compile> .
-For live contact with other developers, visit the C<#xml-compile> channel
-on C<irc.perl.org>.
-
-=head1 LICENSE
-
-Copyrights 2013 by [Mark Overmeer]. For other contributors see ChangeLog.
+Copyrights 2013 on the perl code and the related documentation
+ by [Mark Overmeer] for StudioSV, The Netherlands.  For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

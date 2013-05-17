@@ -4,7 +4,7 @@ use 5.008;
 
 WriteMakefile
  ( NAME	 	=> 'Google::Merchant'
- , VERSION	=> '0.11'
+ , VERSION	=> '0.12'
  , PREREQ_PM    =>
    { XML::Compile::Cache       => 0.994
    , XML::Compile              => 1.34
@@ -33,5 +33,4 @@ SKIP_LINKS	= XML::LibXML
 FIRST_YEAR      = 2013
 EMAIL           = perl@overmeer.net
 WEBSITE         = http://perl.overmeer.net/xml-compile/
-PODTAIL		= ../XML-shared-podtail
 __POSTAMBLE

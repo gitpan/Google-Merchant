@@ -7,13 +7,14 @@ use strict;
 
 package Google::Merchant::AtomFeed;
 use vars '$VERSION';
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 use base 'Google::Merchant';
 
 use Log::Report 'google-merchant';
 
 use XML::Compile::Util qw/XMLNS/;
+use Encode             qw/encode/;
 
 
 sub init($)
@@ -112,7 +113,7 @@ sub _write_texttype($$$$$)
     $attr{type} ||= lc $self->stringFormat;
 
     my $xml  = $r->($doc, \%attr);
-    $xml->appendText($text);
+    $xml->appendText(encode 'utf8', $text);
     $xml;
 }
 
