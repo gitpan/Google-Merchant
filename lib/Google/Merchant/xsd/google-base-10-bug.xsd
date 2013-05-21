@@ -6,6 +6,10 @@
       <xs:documentation> 
         The original group is broken in many ways: name-space, field
         type and occurence.  We overrule it.
+
+        Besides, many many fields are missing from base and other have
+        bugs.  The list below is not complete.  Contact me if you need
+        more.
       </xs:documentation> 
     </xs:annotation>
     <xs:sequence>
@@ -13,14 +17,32 @@
       <xs:element ref="gn:id" minOccurs="0"/>
 
       <!-- the following elements are missing from the spec -->
-      <xs:element name="gtin" minOccurs="0" type="gn:stringAttrValueType" />
-      <xs:element name="mpn"  minOccurs="0" type="gn:stringAttrValueType" />
-      <xs:element name="availability" minOccurs="0" type="gn:availType"   />
-      <xs:element name="sale_price" minOccurs="0" type="gn:floatUnitType" />
-      <xs:element name="additional_image_link"
-            minOccurs="0" maxOccurs="10" type="xs:anyURI" />
-      <xs:element name="sale_price_effective_date"
-            minOccurs="0" type="gn:stringAttrValueType" />
+      <xs:element name="gtin"         type="gn:stringAttrValueType"
+         minOccurs="0" />
+      <xs:element name="mpn"          type="gn:stringAttrValueType"
+         minOccurs="0" />
+      <xs:element name="availability" type="gn:availType"
+         minOccurs="0" />
+      <xs:element name="sale_price"   type="gn:floatUnitType"
+         minOccurs="0" />
+      <xs:element name="additional_image_link"     type="xs:anyURI"
+         minOccurs="0" maxOccurs="10" />
+      <xs:element name="sale_price_effective_date" type="gn:stringAttrValueType"
+         minOccurs="0" />
+      <xs:element name="age_group"    type="gn:ageGroupEnumeration"
+         minOccurs="0" />
+      <xs:element name="item_group_id" type="gn:stringAttrValueType"
+         minOccurs="0" />
+      <xs:element name="material"     type="gn:stringAttrValueType"
+         minOccurs="0" />
+      <xs:element name="pattern"      type="gn:stringAttrValueType"
+         minOccurs="0" />
+      <xs:element name="shipping_weight" type="gn:floatUnitType"
+         minOccurs="0" />
+      <xs:element name="multipack"    type="xs:int"
+         minOccurs="0" />
+      <xs:element name="adult"        type="gn:boolEnumeration"
+         minOccurs="0" />
     </xs:sequence>
   </xs:group>
 
@@ -32,5 +54,32 @@
       <xs:enumeration value="preorder" />
     </xs:restriction>
   </xs:simpleType>
+
+  <!-- unisex was missing as option in base -->
+  <xs:simpleType name="genderEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="male"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="female"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="unisex"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ageGroupEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="adult"/>
+      <xs:enumeration value="kids"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- the schema developer really had no clue what he was doing -->
+  <xs:simpleType name="boolEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRUE"/>
+      <xs:enumeration value="FALSE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
 
 </xs:schema>

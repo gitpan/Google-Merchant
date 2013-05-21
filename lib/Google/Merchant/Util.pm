@@ -7,13 +7,13 @@ use strict;
 
 package Google::Merchant::Util;
 use vars '$VERSION';
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 use base 'Exporter';
 
 use Log::Report 'google-merchant';
 
-my @ns10    = qw/NS_GOOGLE_BASE10 NS_GOOGLE_CUSTOM10/;
+my @ns10    = qw/NS_GOOGLE_BASE10 NS_GOOGLE_CUSTOM10 NS_ATOM_2005/;
 
 our @EXPORT = (@ns10);
 
@@ -25,4 +25,5 @@ our %EXPORT_TAGS =
 use constant
  { NS_GOOGLE_BASE10   => 'http://base.google.com/ns/1.0'
  , NS_GOOGLE_CUSTOM10 => 'http://base.google.com/cns/1.0'
+ , NS_ATOM_2005       => 'http://www.w3.org/2005/Atom'
  };

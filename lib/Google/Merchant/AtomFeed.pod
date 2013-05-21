@@ -104,8 +104,8 @@ See L<documentation in base class|Google::Merchant/"DETAILS">.
  
 =head1 SEE ALSO
 
-This module is part of Google-Merchant distribution version 0.12,
-built on May 17, 2013. Website: F<http://perl.overmeer.net/xml-compile/>.
+This module is part of Google-Merchant distribution version 0.13,
+built on May 21, 2013. Website: F<http://perl.overmeer.net/xml-compile/>.
 
 =head1 COPYRIGHTS
 

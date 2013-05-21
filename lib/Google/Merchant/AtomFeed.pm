@@ -7,14 +7,15 @@ use strict;
 
 package Google::Merchant::AtomFeed;
 use vars '$VERSION';
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 use base 'Google::Merchant';
 
 use Log::Report 'google-merchant';
 
-use XML::Compile::Util qw/XMLNS/;
-use Encode             qw/encode/;
+use Google::Merchant::Util qw/:ns10/;
+use XML::Compile::Util     qw/XMLNS/;
+use Encode                 qw/encode/;
 
 
 sub init($)
@@ -47,17 +48,17 @@ sub _loadSchemas()
 {   my $self = shift;
     my $schemas = $self->SUPER::_loadSchemas();
 
-    $schemas->prefixes(a => 'http://www.w3.org/2005/Atom');
+    $schemas->prefixes('' => NS_ATOM_2005);
     $self->_loadXSD($schemas, 'atom-2005.xsd');
     $schemas->importDefinitions(XMLNS);
     $schemas->declare
-      ( WRITER => 'a:feed'
+      ( WRITER => 'feed'
       , mixed_elements => 'STRUCTURAL'
       , hook   =>
-         [ +{ type    => 'a:textType'
+         [ +{ type    => 'textType'
             , replace => sub {$self->_write_texttype(@_) }
             }
-         , +{ type    => 'a:entryType'
+         , +{ type    => 'entryType'
             , replace => sub {$self->_write_entrytype(@_)}
             }
          ]
@@ -92,7 +93,9 @@ sub _write($$)
     my $format = $args->{beautify} || 0;
     my $doc    = $args->{doc};
 
-    my $root   = $self->schemas->writer('a:feed')->($doc, $args->{feed});
+    my $root   = $self->schemas->writer('feed')->($doc, $args->{feed});
+    $root->setNamespace(NS_GOOGLE_BASE10,   'g', 0);
+    $root->setNamespace(NS_GOOGLE_CUSTOM10, 'c', 0);
     $doc->setDocumentElement($root);
     $doc->setCompression($args->{gzip}) if defined $args->{gzip};
     $doc->toFile($fn, $format);
@@ -122,6 +125,8 @@ sub _write_entrytype($$$$$)
     my $base  = $self->_write_base_entry($doc, delete $val->{_base});
     my $node  = $r->($doc, $val);
     $node->appendChild($_) for $base->childNodes;
+
+    # The xmlns:g is lost here, added globally
     $node;
 }
 

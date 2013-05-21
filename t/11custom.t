@@ -41,17 +41,20 @@ close XML;
 my $version = $Google::Merchant::AtomFeed::VERSION || 'undef';
 compare_xml $xml, <<__XML;
 <?xml version="1.0" encoding="UTF-8"?>
-<a:feed xmlns:a="http://www.w3.org/2005/Atom" base="https://webshop.example.com">
-  <a:title type="html">Demo Webshop</a:title>
-  <a:link href="https://webshop.example.com" rel="self"/>
-  <a:updated>2013-05-11T23:14:49Z</a:updated>
-  <a:generator>Google::Merchant::AtomFeed $version</a:generator>
-  <a:entry>
-    <a:title type="html">LG Flatron M2262D 22" Full HD LCD TV</a:title>
-    <a:link href="http://www.example.com/electronics/tv/LGM2262D.html"/>
-    <a:summary type="html">Attractively styled</a:summary>
+<feed xmlns="http://www.w3.org/2005/Atom"
+    xmlns:g="http://base.google.com/ns/1.0"
+    xmlns:c="http://base.google.com/cns/1.0" 
+    base="https://webshop.example.com">
+  <title type="html">Demo Webshop</title>
+  <link href="https://webshop.example.com" rel="self"/>
+  <updated>2013-05-11T23:14:49Z</updated>
+  <generator>Google::Merchant::AtomFeed $version</generator>
+  <entry>
+    <title type="html">LG Flatron M2262D 22" Full HD LCD TV</title>
+    <link href="http://www.example.com/electronics/tv/LGM2262D.html"/>
+    <summary type="html">Attractively styled</summary>
     <g:id>TV_123456</g:id>
     <profit xmlns="http://base.google.com/cns/1.0" elementType="floatUnit">10.53 EUR</profit>
-  </a:entry>
-</a:feed>
+  </entry>
+</feed>
 __XML
