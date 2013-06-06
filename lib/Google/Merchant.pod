@@ -41,10 +41,12 @@ correct syntax.  On the moment, only the feed of Atoms are implemented,
 although RSS should not be too hard to add.  An attempt is made to hide
 the difference between the two in the here provided interface.
 
-This module can not read merchant files.  As you will also discover in
-the examples shown by Google: they do not use the schema themselves,
-nearly all examples will fail validation!  Especially, the strict order
-of elements in a sequence is ignored by Google's examples.
+This module can not read merchant files.  As you will also discover
+in the examples shown by Google: they do not use the schema themselves,
+nearly all examples will fail validation!  Especially, the strict order of
+elements in a sequence is ignored by Google's examples.  But there are a
+few other bugs as well.  Also, many used elements are not in the schema.
+This is repared by this module.
 
 =head1 METHODS
 
@@ -209,8 +211,8 @@ explain that here until someone needs it ;-)
 
 =head1 SEE ALSO
 
-This module is part of Google-Merchant distribution version 0.13,
-built on May 21, 2013. Website: F<http://perl.overmeer.net/xml-compile/>.
+This module is part of Google-Merchant distribution version 0.14,
+built on May 28, 2013. Website: F<http://perl.overmeer.net/xml-compile/>.
 
 =head1 COPYRIGHTS
 

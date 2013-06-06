@@ -7,7 +7,7 @@ use strict;
 
 package Google::Merchant::AtomFeed;
 use vars '$VERSION';
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 use base 'Google::Merchant';
 
@@ -73,8 +73,8 @@ sub addItem(%)
 {   my ($self, %args) = @_;
 
     my $title = delete $args{title}       or panic "entry title required";
-    my $descr = delete $args{description} or panic "entry descriptions required";
     my $page  = delete $args{webpage}     or panic "entry webpage required";
+    my $descr = delete $args{description};
 
     my @glob;
     push @glob, +{title  => $title};
@@ -113,7 +113,10 @@ sub _write_texttype($$$$$)
     else
     {   $text = $val;
     }
-    $attr{type} ||= lc $self->stringFormat;
+
+    # Clean to use 'type' in atom elements, however the google server
+    # confuses this  with its own "type" attributes.
+#   $attr{type} ||= lc $self->stringFormat;
 
     my $xml  = $r->($doc, \%attr);
     $xml->appendText(encode 'utf8', $text);

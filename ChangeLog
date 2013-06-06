@@ -1,5 +1,10 @@
 ====== version history of Google::Merchant
 
+version 0.14: Tue May 28 12:20:35 CEST 2013
+	- AtomFeed: entry description is optional, but results in
+	  warnings in Google's upload report.
+	- Google gets confused about atom attribute "type".  Remove them.
+
 version 0.13: Tue May 21 10:15:02 CEST 2013
 	- Google's server does not handle namespaces correctly: atom must
 	  be default and base elements must use 'g:'.

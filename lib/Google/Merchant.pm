@@ -7,7 +7,7 @@ use strict;
 
 package Google::Merchant;
 use vars '$VERSION';
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 
 use Log::Report 'google-merchant';

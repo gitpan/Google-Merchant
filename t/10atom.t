@@ -43,14 +43,14 @@ compare_xml $xml, <<__XML;
     xmlns:g="http://base.google.com/ns/1.0"
     xmlns:c="http://base.google.com/cns/1.0"
     base="https://webshop.example.com">
-  <title type="html">Demo Webshop</title>
+  <title>Demo Webshop</title>
   <link href="https://webshop.example.com" rel="self"/>
   <updated>2013-05-11T23:14:49Z</updated>
   <generator>Google::Merchant::AtomFeed $version</generator>
   <entry>
-    <title type="html">LG Flatron M2262D 22" Full HD LCD TV</title>
+    <title>LG Flatron M2262D 22" Full HD LCD TV</title>
     <link href="http://www.example.com/electronics/tv/LGM2262D.html"/>
-    <summary type="html">Attractively styled</summary>
+    <summary>Attractively styled</summary>
     <g:id>TV_123456</g:id>
     <g:brand><![CDATA[&gt;&quot;&lt]]></g:brand>
     <g:isbn>&lt;"&gt;</g:isbn>
