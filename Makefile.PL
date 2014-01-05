@@ -4,9 +4,9 @@ use 5.008;
 
 WriteMakefile
  ( NAME	 	=> 'Google::Merchant'
- , VERSION	=> '0.14'
+ , VERSION	=> '0.15'
  , PREREQ_PM    =>
-   { XML::Compile::Cache       => 0.994
+   { XML::Compile::Cache       => 0.995
    , XML::Compile              => 1.34
    , XML::Compile::Tester      => 0
    , Log::Report               => 0.19

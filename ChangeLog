@@ -1,5 +1,10 @@
 ====== version history of Google::Merchant
 
+version 0.15: Sun Jan  5 19:03:52 CET 2014
+	Improvements:
+	- use ::Cache::addPrefixes()
+	- add google_product_category field
+
 version 0.14: Tue May 28 12:20:35 CEST 2013
 	- AtomFeed: entry description is optional, but results in
 	  warnings in Google's upload report.

@@ -17,15 +17,15 @@ Google::Merchant::AtomFeed - provide Google with product info via Atoms
 
 Produce a product list in Atom version 2005 syntax.
 
-See L<documentation in base class|Google::Merchant/"DESCRIPTION">.
+See L<documentation in the base class|Google::Merchant/"DESCRIPTION">.
  
 =head1 METHODS
 
-See L<documentation in base class|Google::Merchant/"METHODS">.
+See L<documentation in the base class|Google::Merchant/"METHODS">.
  
 =head2 Constructors
 
-See L<documentation in base class|Google::Merchant/"Constructors">.
+See L<documentation in the base class|Google::Merchant/"Constructors">.
  
 =over 4
 
@@ -56,7 +56,7 @@ See L<documentation in base class|Google::Merchant/"Constructors">.
 
 =head2 Accessors
 
-See L<documentation in base class|Google::Merchant/"Accessors">.
+See L<documentation in the base class|Google::Merchant/"Accessors">.
  
 =over 4
 
@@ -72,7 +72,7 @@ See L<Google::Merchant/"Accessors">
 
 =head2 Items
 
-See L<documentation in base class|Google::Merchant/"Items">.
+See L<documentation in the base class|Google::Merchant/"Items">.
  
 =over 4
 
@@ -88,7 +88,7 @@ See L<Google::Merchant/"Items">
 
 =head2 Feed handling
 
-See L<documentation in base class|Google::Merchant/"Feed handling">.
+See L<documentation in the base class|Google::Merchant/"Feed handling">.
  
 =over 4
 
@@ -100,16 +100,16 @@ See L<Google::Merchant/"Feed handling">
 
 =head1 DETAILS
 
-See L<documentation in base class|Google::Merchant/"DETAILS">.
+See L<documentation in the base class|Google::Merchant/"DETAILS">.
  
 =head1 SEE ALSO
 
-This module is part of Google-Merchant distribution version 0.14,
-built on May 28, 2013. Website: F<http://perl.overmeer.net/xml-compile/>.
+This module is part of Google-Merchant distribution version 0.15,
+built on January 05, 2014. Website: F<http://perl.overmeer.net/xml-compile/>.
 
 =head1 COPYRIGHTS
 
-Copyrights 2013 on the perl code and the related documentation
+Copyrights 2013-2014 on the perl code and the related documentation
  by [Mark Overmeer] for StudioSV, The Netherlands.  For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it

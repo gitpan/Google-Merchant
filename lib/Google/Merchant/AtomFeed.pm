@@ -1,4 +1,4 @@
-# Copyrights 2013 by [Mark Overmeer].
+# Copyrights 2013-2014 by [Mark Overmeer].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.01.
@@ -7,7 +7,7 @@ use strict;
 
 package Google::Merchant::AtomFeed;
 use vars '$VERSION';
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 use base 'Google::Merchant';
 
@@ -48,7 +48,7 @@ sub _loadSchemas()
 {   my $self = shift;
     my $schemas = $self->SUPER::_loadSchemas();
 
-    $schemas->prefixes('' => NS_ATOM_2005);
+    $schemas->addPrefixes('' => NS_ATOM_2005);
     $self->_loadXSD($schemas, 'atom-2005.xsd');
     $schemas->importDefinitions(XMLNS);
     $schemas->declare
